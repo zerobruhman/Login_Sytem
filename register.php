@@ -37,7 +37,9 @@ if (isset($_POST['register'])) {
         <input type="password" name="password" placeholder="Password">
         <br>
         <button type="submit" name="register">Register</button>
-        <p><strong><?=$pesan?> </strong></p>
+        <p><strong><?php if($pesan) {
+            echo $pesan;
+        }?> </strong></p>
     </form>
 </body>
 </html>
