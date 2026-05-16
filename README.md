@@ -1,5 +1,10 @@
 # Login System dengan PHP + MySQL
+
+Simple Login System menggunakan PHP Native dengan konsep MVC, MySQL, Session, dan Prepared Statement.
+Project ini dibuat untuk belajar backend fundamental sebelum masuk ke framework seperti Laravel.
+
 ## Setup 
+
 ### Database `sql`
 ```sql
 CREATE TABLE Users (
@@ -32,6 +37,45 @@ class Database {
     }
 }
 ```
+## Features
+
+- Register user
+- Login system
+- Logout system
+- Session authentication
+- Middleware auth (protected route)
+- MVC architecture
+- Prepared statements (anti SQL injection)
+- Password hashing (password_hash & password_verify)
+- Dashboard user listing
+
+---
+
+## Tech Stack
+
+- PHP 
+- MySQL
+
+---
+
+## Default Routes
+
+| Page      | URL                  |
+| --------- | -------------------- |
+| Login     | `/?action=login`     |
+| Register  | `/?action=register`  |
+| Dashboard | `/?action=dashboard` |
+| Logout    | `/?action=logout`    |
+
+---
+
+## Authentication Flow
+
+```
+Login → Session dibuat → Akses Dashboard → Middleware check → Logout destroy session
+```
+---
+
 ## Struktur Folder
 ```
 project/
@@ -60,3 +104,32 @@ project/
 │   └── index.php
 │
 ```
+---
+
+## Konsep yang Dipelajari
+
+* MVC Pattern
+* Routing sederhana
+* Session-based authentication
+* Middleware protection
+* Database interaction
+* Secure password handling
+* Separation of concerns
+
+---
+
+## Notes
+
+* Project ini masih versi belajar (belum production ready)
+* Belum ada CSRF protection
+* Belum ada role system (admin/user)
+* Belum ada validation layer yang lengkap
+
+---
+
+## Future Improvements
+
+* Role-based access (admin/user)
+* CSRF protection
+* Form validation layer
+* Flash messages
