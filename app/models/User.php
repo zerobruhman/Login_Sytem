@@ -41,5 +41,14 @@ class User {
         }
         return $data;
     }
+    public function hapusUser($id) {
+        $perintah_query = "DELETE FROM Users WHERE id = ?";
+        $pernyataan = $this->db->prepare($perintah_query);
+        $pernyataan->bind_param(
+            "i",
+            $id
+        );
+        return $pernyataan->execute();
+    }
 }
 ?>

@@ -16,6 +16,7 @@ class AuthController {
             $this->validate_register($username, $password);
             $this->modeluser->register($username, $password);
             echo "Register berhasil";
+            header("Location: /public/index.php?action=login");
         }
         require __DIR__ . "/../views/auth/register.php";
     }

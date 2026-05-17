@@ -16,5 +16,12 @@ class DashboarController {
         $users = $this->usermodel->tampilkansemuaUser();
         require __DIR__ . "/../views/dashboard.php";
     }
+    public function hapusUser($id) {
+        AuthMiddleware::check();
+
+        $this->usermodel->hapusUser($id);
+        header("Location: /public/index.php?action=dashboard");
+        exit;
+    }
 }
 ?>

@@ -29,7 +29,7 @@ $users = $users ?? [];
                 <td><?= htmlspecialchars($user['username']) ?></td>
                 <td><?= $user['password'] ?></td>
                 <td>
-                    <a href="?hapus=<?= $user['id'] ?>" 
+                    <a href="?action=delete&id=<?= $user['id'] ?>" 
                     class="btn-hapus"
                     onclick="return confirm('Yakin ingin menghapus data ini?')" 
                     style="color: red; text-decoration: none; font-weight: bold;">

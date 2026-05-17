@@ -21,6 +21,10 @@ switch ($action) {
     case "logout":
         $auth->logout();
         break;
+    case "delete":
+        $id = $_GET['id'] ?? null;
+        $dashboard->hapusUser($id);
+        break;
     default:
         $auth->login();
         break;
