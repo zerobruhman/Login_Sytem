@@ -36,6 +36,9 @@ $users = $users ?? [];
                     Hapus
                     </a>
                 </td>
+                <td>
+                     <a href="/public/index.php?action=edit&id=<?= $users['id'] ?>">Edit</a>
+                </td>
             </tr>
             <?php endforeach; ?>
         </tbody>

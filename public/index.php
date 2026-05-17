@@ -25,6 +25,10 @@ switch ($action) {
         $id = $_GET['id'] ?? null;
         $dashboard->hapusUser($id);
         break;
+    case "edit":
+        $id = $_GET["id"] ?? null;
+        $dashboard->updateUser($id);
+        break;
     default:
         $auth->login();
         break;

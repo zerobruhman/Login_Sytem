@@ -50,5 +50,26 @@ class User {
         );
         return $pernyataan->execute();
     }
+    public function updateUser($username, $id) {
+        $perintah_query = "UPDATE Users SET username = ? WHERE id = ?";
+        $pernyataan = $this->db->prepare($perintah_query);
+        $pernyataan->bind_param(
+            "si",
+            $username,
+            $id
+        );
+        return $pernyataan->execute();
+    }
+    public function ambilUserberdasarkanid($id) {
+        $perintah_query = "SELECT * FROM Users WHERE id = ?";
+        $pernyataan = $this->db->prepare($perintah_query);
+        $pernyataan->bind_param(
+            "i",
+            $id
+        );
+        $pernyataan->execute();
+        $hasil = $pernyataan->get_result();
+        return $hasil->fetch_assoc();
+    }
 }
 ?>

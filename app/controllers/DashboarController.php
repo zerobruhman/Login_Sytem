@@ -23,5 +23,23 @@ class DashboarController {
         header("Location: /public/index.php?action=dashboard");
         exit;
     }
+    public function updateUser($id) {
+        AuthMiddleware::check();
+
+        $user = $this->usermodel->ambilUserberdasarkanid($id);
+        if (isset($_POST['update'])) {
+            $username = $_POST['username'] ?? "";
+            $this->validate_update($username);
+
+            $this->usermodel->updateUser($username, $id);
+            header("Location: /public/index.php?action=dashboard");
+            exit;
+        }
+        require __DIR__ . "/../views/edit.php";
+    }
+    private function validate_update($username) {
+        if (trim($username) === "") 
+            die("Username tidak boleh kosong!");
+    }
 }
 ?>
