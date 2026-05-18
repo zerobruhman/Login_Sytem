@@ -26,7 +26,7 @@ switch ($action) {
         $dashboard->hapusUser($id);
         break;
     case "edit":
-        $id = $_GET["id"] ?? null;
+        $id = $_GET['id'] ?? null;
         $dashboard->updateUser($id);
         break;
     default:

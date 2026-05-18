@@ -1,5 +1,5 @@
 <?php
-$users = $users ?? [];
+$users = $users ?? []; 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +37,7 @@ $users = $users ?? [];
                     </a>
                 </td>
                 <td>
-                     <a href="/public/index.php?action=edit&id=<?= $users['id'] ?>">Edit</a>
+                     <a href="/public/index.php?action=edit&id=<?= $user['id'] ?>">Edit</a>
                 </td>
             </tr>
             <?php endforeach; ?>
