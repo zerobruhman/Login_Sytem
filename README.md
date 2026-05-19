@@ -71,7 +71,9 @@ project/
 │   │   ├── auth/
 │   │   │  ├── login.php
 │   │   │  └── register.php
-│   │   └── dashboard.php
+│   │   ├── dashboard.php
+│   │   └── edit.php
+│   │    
 │   ├── moddleware/
 │       └── AuthMiddleware.php
 │
