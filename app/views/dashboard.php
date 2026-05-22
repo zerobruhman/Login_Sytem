@@ -36,7 +36,6 @@ $users = $users ?? [];
                 </td>
                 <td>    
                      <a href="index.php?action=edit&id=<?= $user['id'] ?>">Edit</a>
-                     <form method="POST" action="index.php?action=delete&id=<?= $user['id'] ?>" style="display:inline;"></form>
                 </td>
             </tr>
             <?php endforeach; ?>
