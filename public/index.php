@@ -3,6 +3,7 @@ session_start();
 
 require_once __DIR__ . "/../app/controllers/AuthController.php";
 require_once __DIR__ . "/../app/controllers/DashboarController.php";
+require_once __DIR__ . "/../core/Csrf.php";
 
 $auth = new AuthController();
 $dashboard = new DashboarController();

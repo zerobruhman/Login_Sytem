@@ -12,7 +12,7 @@ $users = $users ?? [];
     <h1>Dashboard</h1>
 
     Halo: <p><strong><?= $_SESSION['username']; ?></strong></p>
-    <a href="/public/index.php?action=logout">Logout</a>
+    <a href="index.php?action=logout">Logout</a>
 
     <table border="1" cellpadding="10">
         <thead>
@@ -27,17 +27,16 @@ $users = $users ?? [];
             <tr>
                 <td><?= $user['id'] ?></td>
                 <td><?= htmlspecialchars($user['username']) ?></td>
-                <td><?= $user['password'] ?></td>
+                <td>********</td>
                 <td>
-                    <a href="?action=delete&id=<?= $user['id'] ?>" 
-                    class="btn-hapus"
-                    onclick="return confirm('Yakin ingin menghapus data ini?')" 
-                    style="color: red; text-decoration: none; font-weight: bold;">
-                    Hapus
-                    </a>
+                    <form method="POST" action="index.php?action=delete&id=<?= $user['id'] ?>" style="display:inline;">
+                        <input type="hidden" name="csrf_token" value="<?= CSRF::GenerateCsrftoken() ?>">
+                        <button type="submit" onclick="return confirm('Yakin ingin menghapus data ini?')" style="color:red;">Hapus</button>
+                    </form>
                 </td>
-                <td>
-                     <a href="/public/index.php?action=edit&id=<?= $user['id'] ?>">Edit</a>
+                <td>    
+                     <a href="index.php?action=edit&id=<?= $user['id'] ?>">Edit</a>
+                     <form method="POST" action="index.php?action=delete&id=<?= $user['id'] ?>" style="display:inline;"></form>
                 </td>
             </tr>
             <?php endforeach; ?>

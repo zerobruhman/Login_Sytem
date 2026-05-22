@@ -23,6 +23,7 @@ class AuthController {
     }
     public function login() {
         if (isset($_POST['login'])) {
+            CSRF::validateCSRFtoken();
             $username = trim($_POST['username']) ?? "";
             $password = trim($_POST['password']) ?? "";
 
@@ -62,6 +63,6 @@ class AuthController {
         else {
             echo "Login gagal! Username atau Password salah!";
         }
-    }   
+    } 
 }
 ?>

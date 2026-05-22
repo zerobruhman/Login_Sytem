@@ -12,12 +12,14 @@ class DashboarController {
     }
     public function index() {
         AuthMiddleware::check();
+        
 
         $users = $this->usermodel->tampilkansemuaUser();
         require __DIR__ . "/../views/dashboard.php";
     }
     public function hapusUser($id) {
         AuthMiddleware::check();
+        CSRF::validateCSRFtoken();
 
         $this->usermodel->hapusUser($id);
         header("Location: /public/index.php?action=dashboard");
@@ -25,7 +27,6 @@ class DashboarController {
     }
     public function updateUser($id) {
         AuthMiddleware::check();
-
         $user = $this->usermodel->ambilUserberdasarkanid($id);
         if (isset($_POST['update'])) {
             $username = $_POST['username'] ?? "";

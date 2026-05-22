@@ -7,6 +7,11 @@
 </head>
 <body>
     <form method="POST">
+        <input
+        type="hidden"
+        name="csrf_token"
+        value="<?= CSRF::GenerateCsrftoken(); ?>"
+        >
         Username: <input type="text" name="username" placeholder="Username"> <br>
         Password: <input type="password" name="password" placeholder="Password"> <br>
         <button type="submit" name="login">Login</button> 
