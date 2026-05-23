@@ -28,12 +28,14 @@ $users = $users ?? [];
                 <td><?= $user['id'] ?></td>
                 <td><?= htmlspecialchars($user['username']) ?></td>
                 <td>********</td>
+                <?php if ($_SESSION['role'] == "admin") :?>
                 <td>
                     <form method="POST" action="index.php?action=delete&id=<?= $user['id'] ?>" style="display:inline;">
                         <input type="hidden" name="csrf_token" value="<?= CSRF::GenerateCsrftoken() ?>">
                         <button type="submit" onclick="return confirm('Yakin ingin menghapus data ini?')" style="color:red;">Hapus</button>
                     </form>
                 </td>
+                <?php endif;?>
                 <td>    
                      <a href="index.php?action=edit&id=<?= $user['id'] ?>">Edit</a>
                 </td>

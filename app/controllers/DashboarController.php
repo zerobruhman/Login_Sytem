@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . "/../middleware/AuthMiddleware.php";
 require_once __DIR__ . "/../models/User.php";
-
+require_once __DIR__ . "/../middleware/AdminMiddleware.php";
 class DashboarController {
 
     private $usermodel;
@@ -19,6 +19,7 @@ class DashboarController {
     }
     public function hapusUser($id) {
         AuthMiddleware::check();
+        AdminMiddleware::check();
         CSRF::validateCSRFtoken();
 
         $this->usermodel->hapusUser($id);

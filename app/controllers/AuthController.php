@@ -55,6 +55,7 @@ class AuthController {
         if (password_verify($password, $user['password'])) { 
             $_SESSION['login'] = true;
             $_SESSION['username'] = $user["username"];
+            $_SESSION['role'] = $user['role'];
 
             print_r ("Login berhasil!");
             header("Location: /public/index.php?action=dashboard");
