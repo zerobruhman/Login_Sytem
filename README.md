@@ -74,7 +74,7 @@ project/
 │   │   ├── dashboard.php
 │   │   └── edit.php
 │   │    
-│   ├── moddleware/
+│   ├── middleware/
 │       └── AuthMiddleware.php
 │
 ├── core/
@@ -124,7 +124,7 @@ class Database {
 ---
 
 ## Notes
-
+    
 * Project ini masih versi belajar (belum production ready)
 * Belum ada CSRF protection
 * Belum ada role system (admin/user)
