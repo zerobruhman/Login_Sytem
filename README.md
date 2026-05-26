@@ -152,4 +152,4 @@ class Database {
 ![edit](image/edit.png)
 
 ### Note for me
-Frontendnya full AI otw (belajar Typescript)
+Frontendnya full AI otw belajar Typescript
