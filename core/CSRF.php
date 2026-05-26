@@ -6,10 +6,10 @@ class CSRF {
         }
         return $_SESSION['csrf_token'];
     }
-    static function verifyCsrfToken() {
+    public static function verifyCsrfToken() {
         $token = $_POST['csrf_token'] ?? '';
         $sessionToken = $_SESSION['csrf_token'] ?? '';
-        if (!hash_equals($token, $sessionToken)) {
+        if (!hash_equals($sessionToken, $token)) {
             http_response_code(403);
             die("CSRF token tidak valid");
         }  

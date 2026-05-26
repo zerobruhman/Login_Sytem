@@ -13,6 +13,8 @@ Project ini dibuat untuk belajar backend fundamental sebelum masuk ke framework 
 * Database interaction
 * Secure password handling
 * Separation of concerns
+* CSRF Protection
+* Role based access
 
 ---
 
@@ -27,6 +29,8 @@ Project ini dibuat untuk belajar backend fundamental sebelum masuk ke framework 
 - Prepared statements (anti SQL injection)
 - Password hashing (password_hash & password_verify)
 - Dashboard user listing
+- CSRF Token
+- Role Admin/User
 
 ---
 
@@ -75,11 +79,11 @@ project/
 │   │   └── edit.php
 │   │    
 │   ├── middleware/
-│       └── AuthMiddleware.php
-│
+│       ├── AuthMiddleware.php
+│       └── AdminMiddleware.php
 ├── core/
-│   └── Database.php
-│   
+│   ├── Database.php
+│   └── CSRF.php
 │
 ├── public/
 │   └── index.php
@@ -126,15 +130,21 @@ class Database {
 ## Notes
     
 * Project ini masih versi belajar (belum production ready)
-* Belum ada CSRF protection
-* Belum ada role system (admin/user)
 * Belum ada validation layer yang lengkap
 
 ---
 
-## Future Improvements
+## Future Improvements 
 
-* Role-based access (admin/user)
-* CSRF protection
 * Form validation layer
 * Flash messages
+
+---
+
+## View
+![login](image/login.png)
+![dashboard](image/dashboard.png)
+![edit](image/edit.png)
+
+### Note for me
+Frontendnya full AI otw (belajar Typescript)
