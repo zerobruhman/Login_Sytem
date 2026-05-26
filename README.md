@@ -98,8 +98,13 @@ project/
 CREATE TABLE Users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(100) NOT NULL,
-    password VARCHAR(255) NOT NULL
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(25) NOT NULL DEFAULT 'user'
 )
+-- Set salah satu user menjadi admin!
+UPDATE Users
+SET role = 'admin'
+WHERE id = 1;
 ```
 ### `core/Database.php`
 ```php
