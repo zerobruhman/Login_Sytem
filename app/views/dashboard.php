@@ -30,8 +30,9 @@ $users = $users ?? [];
                 <td>********</td>
                 <?php if ($_SESSION['role'] == "admin") :?>
                 <td>
-                    <form method="POST" action="index.php?action=delete&id=<?= $user['id'] ?>" style="display:inline;">
+                    <form method="POST" action="index.php?action=delete" style="display:inline;">
                         <input type="hidden" name="csrf_token" value="<?= CSRF::GenerateCsrftoken() ?>">
+                        <input type="hidden" name="id" value="<?= $user['id'] ?>">
                         <button type="submit" onclick="return confirm('Yakin ingin menghapus data ini?')" style="color:red;">Hapus</button>
                     </form>
                 </td>
@@ -40,8 +41,11 @@ $users = $users ?? [];
                      <a href="index.php?action=edit&id=<?= $user['id'] ?>">Edit</a>
                 </td>
             </tr>
-            <?php endforeach; ?>
+            <?php endforeach;?>
         </tbody>
     </table>
 </body>
 </html>
+<?php
+var_dump($_POST);
+?>

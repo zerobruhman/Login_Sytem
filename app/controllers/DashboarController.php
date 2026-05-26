@@ -20,10 +20,10 @@ class DashboarController {
     public function hapusUser($id) {
         AuthMiddleware::check();
         AdminMiddleware::check();
-        CSRF::validateCSRFtoken();
+        CSRF::verifyCsrfToken();
 
         $this->usermodel->hapusUser($id);
-        header("Location: /public/index.php?action=dashboard");
+        header("Location: index.php?action=dashboard");
         exit;
     }
     public function updateUser($id) {

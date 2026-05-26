@@ -23,7 +23,15 @@ switch ($action) {
         $auth->logout();
         break;
     case "delete":
-        $id = $_GET['id'] ?? null;
+        var_dump($_POST);
+        var_dump($_GET);
+        var_dump($_SESSION);
+        if ($_SERVER['REQUEST_METHOD'] !== "POST") {
+            http_response_code(405);
+            die("Method tidak di izinkan");
+        }
+        CSRF::verifyCsrfToken();
+        $id = $_POST['id'] ?? null;
         $dashboard->hapusUser($id);
         break;
     case "edit":

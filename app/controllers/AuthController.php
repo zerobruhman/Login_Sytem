@@ -23,7 +23,7 @@ class AuthController {
     }
     public function login() {
         if (isset($_POST['login'])) {
-            CSRF::validateCSRFtoken();
+            CSRF::verifyCsrfToken();
             $username = trim($_POST['username']) ?? "";
             $password = trim($_POST['password']) ?? "";
 
