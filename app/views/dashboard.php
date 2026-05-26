@@ -420,8 +420,12 @@ $users = $users ?? [];
                     <td class="td-password">••••••••</td>
                     <td class="td-actions">
                         <div class="actions-wrap">
-                            <a href="index.php?action=edit&id=<?= $user['id'] ?>" class="btn-edit">Edit</a>
-                            <?php if(($_SESSION['role'] ?? '') === 'admin'): ?>
+                            <form method="POST" action="index.php?action=edit" style="display:inline">
+                                <input type="hidden" name="csrf_token" value="<?= CSRF::GenerateCsrftoken() ?>">
+                                <input type="hidden" name="id" value="<?= $user['id'] ?>">
+                                <button type="submit" class="btn-edit">Edit</button>
+                            </form>                 
+                             <?php if(($_SESSION['role'] ?? '') === 'admin'): ?>
                             <form method="POST" action="index.php?action=delete" style="display:inline">
                                 <input type="hidden" name="csrf_token" value="<?= CSRF::GenerateCsrftoken() ?>">
                                 <input type="hidden" name="id" value="<?= $user['id'] ?>">

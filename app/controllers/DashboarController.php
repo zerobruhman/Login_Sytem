@@ -28,6 +28,9 @@ class DashboarController {
     }
     public function updateUser($id) {
         AuthMiddleware::check();
+        AdminMiddleware::check();
+        CSRF::verifyCsrfToken();
+        
         $user = $this->usermodel->ambilUserberdasarkanid($id);
         if (isset($_POST['update'])) {
             $username = $_POST['username'] ?? "";
