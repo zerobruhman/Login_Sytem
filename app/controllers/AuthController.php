@@ -9,25 +9,29 @@ class AuthController {
         $this->modeluser = new User();
     }
     public function register() {
+        $error = null;
         if (isset($_POST['register'])) {
-            $username = trim($_POST['username']) ?? "";
-            $password = trim($_POST['password']) ?? "";
+            CSRF::verifyCsrfToken();
+            $username = trim($_POST['username'] ?? "");
+            $password = trim($_POST['password'] ?? "");
 
-            $this->validate_register($username, $password);
-            $this->modeluser->register($username, $password);
-            echo "Register berhasil";
-            header("Location: /public/index.php?action=login");
-            exit;
+            $error = $this->validate_register($username, $password);
+            if (empty($error)) {
+                $this->modeluser->register($username, $password);
+                header("Location: /public/index.php?action=login");
+                exit;
+            }
         }
         require __DIR__ . "/../views/auth/register.php";
     }
     public function login() {
+        $error = null;
         if (isset($_POST['login'])) {
             CSRF::verifyCsrfToken();
-            $username = trim($_POST['username']) ?? "";
-            $password = trim($_POST['password']) ?? "";
+            $username = trim($_POST['username'] ?? "");
+            $password = trim($_POST['password'] ?? "");
 
-            $this->validate_login($username, $password);
+            $error = $this->validate_login($username, $password);
         }
         require __DIR__ . "/../views/auth/login.php";
     }
@@ -38,32 +42,31 @@ class AuthController {
         exit(0);
     }
     private function validate_register($username, $password) {
-        if (empty($username) && empty($password))
-            die("Input tolong di isi");
+        if (empty($username))
+            return "Usename tolong di isi!";
+        if (empty($password))
+            return "Password tolong di isi!";
         if (strlen($password) < 8)
-            die("Password minimal 8 karakter");
+            return "Password harus lebih dari 8 karakter!";
     }
     private function validate_login($username, $password) {
         if (empty($username))
-            die("Username tolong di isi");
+            return "Username tolong di isi";
         if (empty($password))
-            die("Password tolong di isi");
+            return "Password tolong di isi";
         $user = $this->modeluser->cariUser($username);
         if (!$user) {
-            die("User tidak terdaftar");
+            return "User tidak terdaftar";
         }
         if (password_verify($password, $user['password'])) { 
             $_SESSION['login'] = true;
             $_SESSION['username'] = $user["username"];
             $_SESSION['role'] = $user['role'];
 
-            print_r ("Login berhasil!");
             header("Location: /public/index.php?action=dashboard");
             exit();
         }
-        else {
-            echo "Login gagal! Username atau Password salah!";
-        }
+        return "Login gagal! Username atau Password salah!";
     } 
 }
 ?>
