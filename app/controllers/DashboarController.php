@@ -29,22 +29,25 @@ class DashboarController {
     public function updateUser($id) {
         AuthMiddleware::check();
         AdminMiddleware::check();
-        CSRF::verifyCsrfToken();
         
         $user = $this->usermodel->ambilUserberdasarkanid($id);
+        $error = null;
         if (isset($_POST['update'])) {
             $username = $_POST['username'] ?? "";
-            $this->validate_update($username);
+            $error = $this->validate_update($username);
 
-            $this->usermodel->updateUser($username, $id);
-            header("Location: /public/index.php?action=dashboard");
-            exit;
+            if (empty($error)) {
+                $this->usermodel->updateUser($username, $id);
+                header("Location: /public/index.php?action=dashboard");
+                exit;   
+            }
         }
         require __DIR__ . "/../views/edit.php";
     }
     private function validate_update($username) {
-        if (trim($username) === "") 
-            die("Username tidak boleh kosong!");
+        $usernametrim = trim($username);
+        if (empty($usernametrim)) 
+            return "Username tidak boleh kosong!";
     }
 }
 ?>
