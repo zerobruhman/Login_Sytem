@@ -1,6 +1,6 @@
 <?php
 $user  = $user ?? [];
-$error = $error ?? null;
+$errors = $errors ?? null;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -189,8 +189,10 @@ $error = $error ?? null;
     <h1>Edit User</h1>
     <div class="subtitle">// id: <?= htmlspecialchars($user['id'] ?? '-') ?></div>
 
-    <?php if ($error): ?>
-    <div class="error-box"><?= htmlspecialchars($error) ?></div>
+    <?php if (!empty($errors)): ?>
+        <?php foreach ($errors as $e): ?>
+            <div class="error-box"><?= htmlspecialchars($e) ?></div> 
+        <?php endforeach; ?>
     <?php endif; ?>
 
     <?php if (empty($user)): ?>
@@ -212,13 +214,32 @@ $error = $error ?? null;
         </div>
 
         <div class="field">
-            <label>Password baru <span style="color:var(--text3)">(kosongkan jika tidak diganti)</span></label>
+            <label>Old Password<span style="color:var(--text3)">(kosongkan jika tidak diganti)</span></label>
             <input
                 type="password"
-                name="password"
+                name="old_password"
                 placeholder="••••••••"
             >
         </div>
+
+        <div class="field">
+            <label>New Password <span style="color:var(--text3)"></span></label>
+            <input
+                type="password"
+                name="new_password"
+                placeholder="••••••••"
+            >
+        </div>
+
+        <div class="field">
+            <label>Verify Password <span style="color:var(--text3)"></span></label>
+            <input
+                type="password"
+                name="verify_password"
+                placeholder="••••••••"
+            >
+        </div>
+
 
         <div class="btn-row">
             <a href="index.php?action=dashboard" class="btn-secondary">Batal</a>

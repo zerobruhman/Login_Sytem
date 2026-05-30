@@ -47,7 +47,7 @@ class AuthController {
         if (empty($password))
             return "Password tolong di isi!";
         if (strlen($password) < 8)
-            return "Password harus lebih dari 8 karakter!";
+            return "Password minimal 8 karakter!";
     }
     private function validate_login($username, $password) {
         if (empty($username))

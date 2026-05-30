@@ -15,7 +15,8 @@ Project ini dibuat untuk belajar backend fundamental sebelum masuk ke framework 
 * Separation of concerns
 * CSRF Protection
 * Role based access
-
+* Flash messages
+* Validation Layer
 ---
 
 ## Features
@@ -31,6 +32,8 @@ Project ini dibuat untuk belajar backend fundamental sebelum masuk ke framework 
 - Dashboard user listing
 - CSRF Token
 - Role Admin/User
+- Validation Layer
+- Flash Messages
 
 ---
 
@@ -134,14 +137,10 @@ class Database {
 ## Notes
     
 * Project ini masih versi belajar (belum production ready)
-* Belum ada validation layer yang lengkap
 
 ---
 
-## Future Improvements 
-
-* Form validation layer
-* Flash messages
+## Future Improvements?
 
 ---
 

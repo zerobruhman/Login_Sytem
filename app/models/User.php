@@ -60,6 +60,18 @@ class User {
         );
         return $pernyataan->execute();
     }
+    public function updatePassword($password, $id) {
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+
+        $perintah_query = "UPDATE Users SET password = ? WHERE id = ?";
+        $pernyataan = $this->db->prepare($perintah_query);
+        $pernyataan->bind_param(
+            "si",
+            $hash,
+            $id
+        );
+        return $pernyataan->execute();
+    }
     public function ambilUserberdasarkanid($id) {
         $perintah_query = "SELECT * FROM Users WHERE id = ?";
         $pernyataan = $this->db->prepare($perintah_query);
