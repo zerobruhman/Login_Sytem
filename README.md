@@ -50,7 +50,6 @@ Project ini dibuat untuk belajar backend fundamental sebelum masuk ke framework 
 | --------- | -------------------- |
 | Login     | `/?action=login`     |
 | Register  | `/?action=register`  |
-| Logout    | `/?action=logout`    |
 
 ---
 
